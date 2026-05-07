@@ -4,14 +4,27 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-Reproducible analysis of how weather conditions (temperature, humidity, wind speed) relate to nitrogen dioxide (NO2) levels in Chicago.
+End-to-end data engineering and analysis project that investigates how weather conditions (temperature, humidity, and wind speed) relate to nitrogen dioxide (NO2) pollution in Chicago.
 
-## What This Repository Does
+## Portfolio Overview
+- **Problem**: Urban air quality is shaped by both emissions and weather dynamics.
+- **Approach**: Build a reproducible pipeline that integrates public weather and EPA pollutant data.
+- **Outcome**: Produce clean analytical datasets, correlation outputs, and publication-ready visualizations.
+- **Value**: Demonstrates practical skills in data ingestion, cleaning, workflow automation, and technical communication.
+
+## Project Scope
 - Fetches weather observations from the City of Chicago API.
 - Fetches NO2 data from the EPA AQS API.
 - Cleans and aligns both datasets at daily granularity.
 - Produces integrated analysis outputs and visualizations.
 - Runs either as a Python script or a Snakemake workflow.
+
+## Skills Demonstrated
+- Python data workflows (`pandas`, `requests`, plotting stack)
+- Reproducible pipelines (`Snakemake` + scripted entrypoint)
+- Data integration and transformation logic
+- Exploratory/statistical analysis and correlation reporting
+- Repository documentation and research-style presentation
 
 ## Quick Start (Run in 3 Steps)
 1. Install dependencies:
@@ -67,8 +80,8 @@ flowchart TD
     plotStep --> plotOut[output/plots/*.png]
 ```
 
-## GitHub-Native Interactive Section
-Use the expandable sections below for a guided tour directly on GitHub.
+## GitHub-Native Interactive Tour
+Use the expandable sections below for a guided walkthrough directly on GitHub.
 
 <details>
 <summary><strong>Pipeline Walkthrough</strong></summary>
@@ -99,14 +112,14 @@ Use the expandable sections below for a guided tour directly on GitHub.
 
 </details>
 
-## Hybrid Artifact Strategy
-This repository tracks **source + curated showcase artifacts**, while excluding bulky/generated runtime files.
+## Demo and Showcase Artifacts
+This repository tracks **source code + curated showcase artifacts**, while excluding bulky runtime-generated files.
 
 - Curated artifacts belong in `output/showcase/`.
 - Full runtime-generated outputs in `output/` are excluded by `.gitignore`.
 - Temporary CSVs under `data/` are excluded (except `data/.gitkeep`).
 
-Recommended curated set for presentation:
+Recommended curated set for portfolio presentation:
 - 1 integrated sample dataset (small CSV)
 - 2-3 representative plots (for findings overview)
 
@@ -134,6 +147,12 @@ Pollutant_Analysis_IS477/
 - Data dictionary: [`data_dictionary.md`](data_dictionary.md)
 - Metadata record: [`metadata.json`](metadata.json)
 - Archived DOI release: [Zenodo](https://doi.org/10.5281/zenodo.14373781)
+
+## Key Takeaways
+- Humidity shows an inverse relationship with NO2 concentration.
+- Lower wind speeds align with higher NO2 accumulation patterns.
+- Temperature effects appear more seasonal and non-linear than strictly monotonic.
+- The architecture is intentionally reusable for extending to other pollutants or cities.
 
 ## Pre-Push Checklist
 - [ ] `pip install -r requirements.txt` succeeds
