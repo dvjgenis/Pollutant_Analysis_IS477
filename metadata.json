@@ -1,0 +1,71 @@
+{
+    "title": "Pollutant - Weather Analysis in Chicago",
+    "authors": [
+      {
+        "name": "Smriti Smriti",
+        "orcid": "0009-0000-9865-6320",
+        "affiliation": "University of Illinois Urbana-Champaign"
+      },
+      {
+        "name": "Dulf Vincent Genis",
+        "orcid": "0009-0006-1678-602X",
+        "affiliation": "University of Illinois Urbana-Champaign"
+      }
+    ],
+    "description": {
+      "content": "This project investigates the relationship between weather conditions and nitrogen dioxide (NO₂) pollution levels in Chicago. By integrating data from the City of Chicago's Open Data Portal and the U.S. Environmental Protection Agency (EPA), the analysis explores how factors such as air temperature, wind speed, and humidity influence NO₂ concentrations. The project employs data cleaning, integration, statistical analysis, and visualization techniques to uncover patterns and correlations, providing insights that could inform environmental and public health strategies.",
+      "descriptionType": "Abstract"
+    },
+    "keywords": ["Weather Analysis", "Air Pollution", "Nitrogen Dioxide", "Data Integration", "Chicago", "Environmental Health"],
+    "license": "MIT",
+    "version": "1.0.0",
+    "repository": {
+      "repositoryName": "GitHub",
+      "url": "https://github.com/illinois-data-curation/is477-fa24-pollutantAnalysis"
+    },
+    "doi": "10.5281/zenodo.14373781",
+    "dates": [
+      {
+        "date": "2024-12-10",
+        "dateType": "Issued"
+      }
+    ],
+    "dataSources": [
+      {
+        "name": "City of Chicago Open Data Portal",
+        "description": "Provides hourly weather data from Beach Weather Stations Automated Sensors in Chicago.",
+        "url": "https://data.cityofchicago.org/Parks-Recreation/Beach-Weather-Stations-Automated-Sensors/k7hf-8y75/about_data",
+        "license": "Public Domain",
+        "license_url": "https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html"
+      },
+      {
+        "name": "U.S. Environmental Protection Agency (EPA) Air Quality System",
+        "description": "Offers daily air quality data focusing on nitrogen dioxide (NO₂) levels across different sites near Chicago.",
+        "url": "https://www.epa.gov/outdoor-air-quality-data/download-daily-data",
+        "license": "Public Domain",
+        "license_url": "https://edg.epa.gov/epa_data_license.html"
+      }
+    ],
+    "methods": [
+      "Data fetching via APIs",
+      "Data cleaning and preprocessing using Python's Pandas library",
+      "Data integration based on date alignment",
+      "Correlation analysis using statistical methods",
+      "Visualization using Matplotlib and Seaborn"
+    ],
+    "dependencies": [
+      {"name": "pandas", "version": ">=2.2.3"},
+      {"name": "requests", "version": ">=2.32.3"},
+      {"name": "matplotlib", "version": ">=3.9.3"},
+      {"name": "seaborn", "version": ">=0.13.2"},
+      {"name": "PyYAML", "version": ">=6.0.2"},
+      {"name": "scipy", "version": ">=1.14.1"},
+      {"name": "statsmodels", "version": ">=0.14.4"},
+      {"name": "scikit-learn", "version": ">=1.6.0"},
+      {"name": "snakemake", "version": ">=8.25.5"}
+    ],
+    "contact": {
+      "correspondingAuthor": "Dulf Vincent Genis",
+      "email": "dgeni2@illinois.edu"
+    }
+  }  

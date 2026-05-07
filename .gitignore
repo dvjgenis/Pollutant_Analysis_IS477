@@ -1,0 +1,35 @@
+# macOS / OS noise
+.DS_Store
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Local environment files
+.env
+.env.*
+
+# Build and packaging
+build/
+dist/
+*.egg-info/
+
+# Runtime outputs (keep only curated showcase artifacts)
+output/*
+!output/showcase/
+!output/showcase/**
+
+# Local data cache and temporary exports
+data/*.csv
+!data/.gitkeep
