@@ -6,9 +6,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&duration=3500&pause=1000&color=2563EB&center=true&vCenter=true&width=620&height=50&lines=Chicago+weather+%C3%97+EPA+NO%E2%82%82;Reproducible+pollutant%E2%80%93weather+pipeline" alt="Typing SVG" />
+
 **TL;DR — One sentence:** A reproducible data pipeline that joins Chicago weather with EPA nitrogen dioxide (NO₂) data to show how temperature, humidity, and wind relate to air pollution — with clean datasets, correlations, and plots you can regenerate in one command.
 
 **Why it matters:** Urban air quality isn't only about emissions. Weather shapes how pollution builds up or clears. Understanding those relationships helps make environmental data useful for analysis, teaching, and city-scale storytelling.
+
+**Author:** Dulf Vincent Genis
 
 </div>
 
