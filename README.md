@@ -12,8 +12,6 @@
 
 **Why it matters:** Urban air quality isn't only about emissions. Weather shapes how pollution builds up or clears. Understanding those relationships helps make environmental data useful for analysis, teaching, and city-scale storytelling.
 
-**Author:** Dulf Vincent Genis
-
 </div>
 
 ---
