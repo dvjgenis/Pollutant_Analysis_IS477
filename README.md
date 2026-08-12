@@ -1,166 +1,160 @@
-# Pollutant-Weather Analysis in Chicago
+<div align="center">
+
+# Pollutant–Weather Analysis in Chicago
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14373781.svg)](https://doi.org/10.5281/zenodo.14373781)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-End-to-end data engineering and analysis project that investigates how weather conditions (temperature, humidity, and wind speed) relate to nitrogen dioxide (NO2) pollution in Chicago.
+**TL;DR — One sentence:** A reproducible data pipeline that joins Chicago weather with EPA nitrogen dioxide (NO₂) data to show how temperature, humidity, and wind relate to air pollution — with clean datasets, correlations, and plots you can regenerate in one command.
 
-## Portfolio Overview
-- **Problem**: Urban air quality is shaped by both emissions and weather dynamics.
-- **Approach**: Build a reproducible pipeline that integrates public weather and EPA pollutant data.
-- **Outcome**: Produce clean analytical datasets, correlation outputs, and publication-ready visualizations.
-- **Value**: Demonstrates practical skills in data ingestion, cleaning, workflow automation, and technical communication.
+**Why it matters:** Urban air quality isn't only about emissions. Weather shapes how pollution builds up or clears. Understanding those relationships helps make environmental data useful for analysis, teaching, and city-scale storytelling.
 
-## Project Scope
-- Fetches weather observations from the City of Chicago API.
-- Fetches NO2 data from the EPA AQS API.
-- Cleans and aligns both datasets at daily granularity.
-- Produces integrated analysis outputs and visualizations.
-- Runs either as a Python script or a Snakemake workflow.
+</div>
 
-## Skills Demonstrated
-- Python data workflows (`pandas`, `requests`, plotting stack)
-- Reproducible pipelines (`Snakemake` + scripted entrypoint)
-- Data integration and transformation logic
-- Exploratory/statistical analysis and correlation reporting
-- Repository documentation and research-style presentation
+---
 
-## Quick Start (Run in 3 Steps)
-1. Install dependencies:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   ```
-2. Set EPA credentials:
-   ```bash
-   export EPA_API_EMAIL="your_email@example.com"
-   export EPA_API_KEY="your_api_key"
-   ```
-3. Run pipeline:
-   ```bash
-   python3 scripts/run_pipeline.py
-   ```
-   or
-   ```bash
-   snakemake --cores 4
-   ```
+## What this is (in plain English)
 
-## Architecture
+This project answers a concrete question:
 
-### Module Architecture
-```mermaid
-flowchart TD
-    fetch[data_fetching.py] --> process[data_processing.py]
-    process --> integrate[data_integration.py]
-    integrate --> analysis[analysis.py]
-    integrate --> viz[visualization.py]
-    package[Weather_Pollution_Package] --> fetch
-    package --> process
-    package --> integrate
-    package --> analysis
-    package --> viz
+> When weather changes in Chicago, how does NO₂ pollution move with it?
+
+It does that by building a **full pipeline**, not a one-off notebook:
+
+1. **Fetch** weather from the City of Chicago API and NO₂ from the EPA AQS API  
+2. **Clean** and align both sources to a shared daily timeline  
+3. **Integrate** into one analysis-ready dataset  
+4. **Analyze** correlations and export publication-style charts  
+
+Run it as a Python script *or* a Snakemake workflow. Outputs land in `output/` (with curated showcase samples kept for portfolio viewing).
+
+Archived release: [DOI 10.5281/zenodo.14373781](https://doi.org/10.5281/zenodo.14373781)
+
+---
+
+## Why it's interesting / significant
+
+| | |
+|---|---|
+| **Real public data** | City weather + EPA AQS — the same kinds of sources used in serious environmental work |
+| **End-to-end engineering** | Ingest → clean → join → analyze → visualize, not just a chart dump |
+| **Reproducibility** | Script entrypoint *and* Snakemake; documented data dictionary + Zenodo DOI |
+| **Clear findings** | Humidity inversely related to NO₂; low wind ↔ higher NO₂ buildup; temperature effects look seasonal / non-linear |
+| **Reusable pattern** | Swap pollutant or city and keep the same architecture |
+
+**Skills on display:** Python data workflows, API integration, reproducible pipelines, statistical exploration, technical documentation.
+
+---
+
+## Key takeaways from the analysis
+
+- **Humidity** tends to move opposite NO₂ concentration  
+- **Lower wind speeds** align with higher NO₂ accumulation  
+- **Temperature** effects look more seasonal and non-linear than a simple straight-line story  
+- The package layout is intentionally reusable for other pollutants or cities  
+
+---
+
+## Quick start (3 steps)
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
-### Execution Flow
+```bash
+export EPA_API_EMAIL="your_email@example.com"
+export EPA_API_KEY="your_api_key"
+```
+
+```bash
+python3 scripts/run_pipeline.py
+# or: snakemake --cores 4
+```
+
+---
+
+## How the pipeline works
+
 ```mermaid
 flowchart TD
-    user[User] --> entry{EntryPoint}
+    user[User] --> entry{Entry point}
     entry --> runScript[scripts/run_pipeline.py]
     entry --> snake[Snakefile]
-    runScript --> fetchStep[FetchData]
+    runScript --> fetchStep[Fetch data]
     snake --> fetchStep
-    fetchStep --> cleanStep[CleanData]
-    cleanStep --> integrateStep[IntegrateData]
-    integrateStep --> analyzeStep[ComputeCorrelation]
-    integrateStep --> plotStep[GeneratePlots]
+    fetchStep --> cleanStep[Clean data]
+    cleanStep --> integrateStep[Integrate by date]
+    integrateStep --> analyzeStep[Correlation]
+    integrateStep --> plotStep[Plots]
     analyzeStep --> corrOut[output/correlation_matrix.csv]
     integrateStep --> dataOut[output/integrated_weather_pollution_data.csv]
-    plotStep --> plotOut[output/plots/*.png]
+    plotStep --> plotOut[output/plots]
 ```
 
-## GitHub-Native Interactive Tour
-Use the expandable sections below for a guided walkthrough directly on GitHub.
+**Module map:** `data_fetching` → `data_processing` → `data_integration` → `analysis` + `visualization` (all under `Weather_Pollution_Package/`).
 
 <details>
-<summary><strong>Pipeline Walkthrough</strong></summary>
+<summary><strong>Step-by-step walkthrough</strong></summary>
 
-1. `fetch_weather_data()` and `fetch_pollutant_data()` retrieve raw API data.
-2. `clean_weather_data()` and `clean_pollutant_data()` standardize columns and quality.
-3. `integrate_datasets()` aligns weather and pollutant records by date.
-4. `compute_correlation()` creates the correlation matrix.
-5. Visualization utilities export trend and relationship plots.
+1. `fetch_weather_data()` / `fetch_pollutant_data()` — pull raw API data  
+2. `clean_weather_data()` / `clean_pollutant_data()` — standardize columns and quality  
+3. `integrate_datasets()` — align by date  
+4. `compute_correlation()` — correlation matrix  
+5. Visualization helpers — trend and relationship PNGs  
 
 </details>
 
 <details>
-<summary><strong>Expected Outputs</strong></summary>
+<summary><strong>Expected outputs</strong></summary>
 
-- `output/integrated_weather_pollution_data.csv`
-- `output/correlation_matrix.csv`
-- `output/plots/` PNG figures
+- `output/integrated_weather_pollution_data.csv`  
+- `output/correlation_matrix.csv`  
+- `output/plots/` PNG figures  
+- Curated samples for the portfolio live in `output/showcase/`  
 
 </details>
 
 <details>
 <summary><strong>Troubleshooting</strong></summary>
 
-- Missing EPA credentials: export `EPA_API_EMAIL` and `EPA_API_KEY`.
-- Import errors: reactivate your virtual environment and reinstall requirements.
-- Empty outputs: verify API access and rerun pipeline command.
+- Missing EPA credentials → export `EPA_API_EMAIL` and `EPA_API_KEY`  
+- Import errors → reactivate the venv and reinstall `requirements.txt`  
+- Empty outputs → check API access, then rerun  
 
 </details>
 
-## Demo and Showcase Artifacts
-This repository tracks **source code + curated showcase artifacts**, while excluding bulky runtime-generated files.
+---
 
-- Curated artifacts belong in `output/showcase/`.
-- Full runtime-generated outputs in `output/` are excluded by `.gitignore`.
-- Temporary CSVs under `data/` are excluded (except `data/.gitkeep`).
+## Repository structure
 
-Recommended curated set for portfolio presentation:
-- 1 integrated sample dataset (small CSV)
-- 2-3 representative plots (for findings overview)
-
-## Repository Structure
 ```text
 Pollutant_Analysis_IS477/
-├── Weather_Pollution_Package/
-│   ├── data_fetching.py
-│   ├── data_processing.py
-│   ├── data_integration.py
-│   ├── analysis.py
-│   ├── visualization.py
-│   └── __init__.py
+├── Weather_Pollution_Package/   # fetch, clean, integrate, analyze, plot
 ├── scripts/run_pipeline.py
 ├── Snakefile
 ├── requirements.txt
 ├── data_dictionary.md
 ├── metadata.json
-├── output/showcase/
+├── output/showcase/             # curated portfolio artifacts
 ├── README.md
 └── LICENSE
 ```
 
-## Documentation
-- Data dictionary: [`data_dictionary.md`](data_dictionary.md)
-- Metadata record: [`metadata.json`](metadata.json)
-- Archived DOI release: [Zenodo](https://doi.org/10.5281/zenodo.14373781)
+**Note:** Runtime-generated bulk under `output/` and temp CSVs under `data/` are gitignored; showcase samples are intentional.
 
-## Key Takeaways
-- Humidity shows an inverse relationship with NO2 concentration.
-- Lower wind speeds align with higher NO2 accumulation patterns.
-- Temperature effects appear more seasonal and non-linear than strictly monotonic.
-- The architecture is intentionally reusable for extending to other pollutants or cities.
+---
 
-## Pre-Push Checklist
-- [ ] `pip install -r requirements.txt` succeeds
-- [ ] EPA credentials are set in environment (not committed)
-- [ ] Pipeline runs from script or Snakemake
-- [ ] README links and Mermaid diagrams render on GitHub
-- [ ] `venv/`, caches, and generated noise are not tracked
-- [ ] Curated showcase artifacts in `output/showcase/` are intentional
+## Docs
+
+- [`data_dictionary.md`](data_dictionary.md) — field definitions  
+- [`metadata.json`](metadata.json) — project metadata  
+- [Zenodo archive](https://doi.org/10.5281/zenodo.14373781)  
+
+---
 
 ## License
-MIT License. See [`LICENSE`](LICENSE).
+
+MIT — see [`LICENSE`](LICENSE).
