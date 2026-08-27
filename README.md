@@ -1,10 +1,14 @@
 <div align="center">
 
+<img src="docs/banner.svg" alt="Pollutant–Weather Analysis in Chicago — EPA NO2 joined with city weather" width="100%" />
+
+<br/>
+
 # Pollutant–Weather Analysis in Chicago
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14373781.svg)](https://doi.org/10.5281/zenodo.14373781)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
 
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=18&duration=3500&pause=1000&color=2563EB&center=true&vCenter=true&width=620&height=50&lines=Chicago+weather+%C3%97+EPA+NO%E2%82%82;Reproducible+pollutant%E2%80%93weather+pipeline" alt="Typing SVG" />
 
